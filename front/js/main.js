@@ -15,11 +15,12 @@ console.log('test basic');
 t.alert();
 
 fetch('http://localhost:9312', {
-    method: 'get'
+    method: 'get',
+    mode: 'no-cors'
 }).then(function(response) {
-    
+    return response.json();
 }).catch(function(err) {
-    
+    console.log("crash");
 });
 
 var HelloMessage = React.createClass({
