@@ -12,8 +12,9 @@ class Controller {
 			response.writeHead(204, {'Content-Type': 'application/json' });
 		}
 		else {
-			response.writeHead(200, {'Content-Type': 'application/json' });
-			response.write(JSON.stringify([...this.dal.getMap()]));
+			var data = JSON.stringify([...this.dal.getMap()]);
+			response.writeHead(200, {'Content-Type': 'application/json', 'Content-Length': data.length });
+			response.write(data);
 		}		
 
 		response.end();
@@ -29,8 +30,9 @@ class Controller {
 			response.writeHead(404, {'Content-Type': 'application/json' });
 		}
 		else {
-			response.writeHead(200, {'Content-Type': 'application/json' });
-			response.write(JSON.stringify(episode));
+			var data = JSON.stringify(episode);
+			response.writeHead(200, {'Content-Type': 'application/json', 'Content-Length': data.length });
+			response.write(data);
 		}		
 
 		response.end();
@@ -57,8 +59,9 @@ class Controller {
 				episode: episode.episode
 			});
 
-			response.writeHead(201, {'Content-Type': 'application/json' });
-			response.write(JSON.stringify(this.dal.get(id)));
+			var data = JSON.stringify(this.dal.get(id));
+			response.writeHead(201, {'Content-Type': 'application/json', 'Content-Length': data.length });
+			response.write(data);
 			response.end();    
 		}.bind(this));
 	}
