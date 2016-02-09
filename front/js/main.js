@@ -3,35 +3,23 @@ import { render } from 'react-dom'
 
 var serverUrl = 'http://localhost:9312';
 
-// class Tutu
-// {
-//     alert() {
-//         console.log('Test Class');
-//     }
-// }
+fetch(serverUrl, {
+    method: 'get'
+}).then(function(response) {
+    return response.json();
+}).then(function(data) {
+    console.log('data' + data);
+}).catch(function(error) {
+    console.log('error :' + error);
+});
 
-// var t = new Tutu();
-
-// console.log('test basic');
-
-// t.alert();
-
-// fetch('http://localhost:9312', {
-//     method: 'get',
-//     mode: 'no-cors'
-// }).then(function(response) {
-//     return response.json();
-// }).catch(function(err) {
-//     console.log("crash");
-// });
-
-// var HelloMessage = React.createClass({
-//   render: function() {
-//     return <div>Hello {this.props.name}</div>;
-//   }
-// });
-
-// render(<HelloMessage name="John" />, document.getElementById('content'));
+var Episode = React.createClass({
+    render: function() {
+        return (
+            <EpisodeForm />
+        );
+    }
+});
 
 var EpisodeForm = React.createClass({
     getInitialState: function() {
@@ -87,4 +75,4 @@ var EpisodeForm = React.createClass({
     }
 });
 
-render(<EpisodeForm />, document.getElementById('episode-form'));
+render(<Episode/>, document.getElementById('episode-form'));
