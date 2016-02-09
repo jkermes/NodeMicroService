@@ -1,3 +1,7 @@
 back/node_modules
 back/test/node_modules
 back/server.log
+front/node_modules
+front/bundle.js
+front/*.hot-update.js
+front/*.hot-update.json
