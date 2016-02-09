@@ -9,11 +9,20 @@ class Controller {
 	getEpisodes(request, response) {
 
 		if (this.dal.size() == 0) {
-			response.writeHead(204, {'Content-Type': 'application/json' });
+			response.writeHead(204, {
+				'Content-Type': 'application/json',
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Headers': 'X-Requested-With'
+			});
 		}
 		else {
 			var data = JSON.stringify([...this.dal.getMap()]);
-			response.writeHead(200, {'Content-Type': 'application/json', 'Content-Length': data.length });
+			response.writeHead(200, {
+				'Content-Type': 'application/json',
+				'Content-Length': data.length,
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Headers': 'X-Requested-With'
+			});
 			response.write(data);
 		}		
 
@@ -27,11 +36,19 @@ class Controller {
 		var episode = this.dal.get(id);
 
 		if (null == episode) {
-			response.writeHead(404, {'Content-Type': 'application/json' });
+			response.writeHead(404, {
+				'Content-Type': 'application/json',
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Headers': 'X-Requested-With'
+			});
 		}
 		else {
 			var data = JSON.stringify(episode);
-			response.writeHead(200, {'Content-Type': 'application/json', 'Content-Length': data.length });
+			response.writeHead(200, {
+				'Content-Type': 'application/json', 'Content-Length': data.length,
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Headers': 'X-Requested-With'
+			});
 			response.write(data);
 		}		
 
@@ -60,7 +77,11 @@ class Controller {
 			});
 
 			var data = JSON.stringify(this.dal.get(id));
-			response.writeHead(201, {'Content-Type': 'application/json', 'Content-Length': data.length });
+			response.writeHead(201, {
+				'Content-Type': 'application/json', 'Content-Length': data.length,
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Headers': 'X-Requested-With'
+			});
 			response.write(data);
 			response.end();    
 		}.bind(this));
