@@ -21,7 +21,7 @@ class Dal {
 	}
 
 	getMap() {
-		return this.map;
+		return this.map.values();
 	}
 }
 
