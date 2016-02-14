@@ -6,7 +6,7 @@
 	
 ### To launch client :
 
-	php -S localhost:8080 -t index.html
+	php -S localhost:8080 front/index.html
 
 ### To launch webpack:
 
