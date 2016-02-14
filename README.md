@@ -1,11 +1,18 @@
 # NodeMicroService
 
-To launch the server:
-node --use-strict back/server/index.js
+### To launch the server :
 
-To launch webpack:
-node_modules/.bin/webpack -w --config
+	node --use-strict back/server/index.js
+	
+### To launch client :
 
-Folder structure:
-	- front (react/css)
-	- back (server)	
+	php -S localhost:8080 -t index.html
+
+### To launch webpack:
+
+	node_modules/.bin/webpack -w --config
+
+### Folder structure :
+
+	├ front (react/css)
+	├ back (server)	
