@@ -7,7 +7,7 @@
 	npm install
 	
 - Into front directory :
-- 
+
 	npm install
 
 ### To launch the server :
