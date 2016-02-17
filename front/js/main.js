@@ -3,24 +3,76 @@ import { render } from 'react-dom'
 
 var serverUrl = 'http://localhost:9312';
 
-fetch(serverUrl, {
-    method: 'get'
-}).then(function(response) {
-    return response.json();
-}).then(function(data) {
-    console.log('data' + data);
-}).catch(function(error) {
-    console.log('error :' + error);
-});
-
 var Episode = React.createClass({
     render: function() {
-        return (
+        return (<div>
+			<EpisodeList />
             <EpisodeForm />
+            </div>
         );
     }
 });
 
+var EpisodeList = React.createClass({
+	getInitialState: function() {
+        return {episodes: ''};
+    },
+	loadAllEpisodes: function() {
+        var data;
+        var req = new XMLHttpRequest();
+        req.open('GET', 'http://localhost:9312/', true);
+        req.overrideMimeType('application/json');
+        req.onreadystatechange = function (aEvt) {
+            if (req.readyState == 4) {
+                if (req.status == 200) {
+                    data = req.responseText;
+                    console.log(data);
+                }
+                else {
+                     console.log('Erreur pendant le chargement de la page.\n');
+                }
+            }
+        };
+        console.log(data);
+        req.send(null);
+
+        this.setState({episodes: data});
+        
+	},
+	   render: function() {
+        return (<table>
+                    <thead>
+                        <tr>
+                            <td>Id</td>
+                            <td>Serie</td>
+                            <td>Season</td>
+                            <td>Episode</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                    </tbody>
+                </table>
+        );
+    },
+	componentDidMount: function() {
+		this.loadAllEpisodes();
+		console.log(this.state.episodes);
+	}
+});
+
+var EpisodeListItem = React.createClass({
+	render: function() {
+		return (
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			);
+	}
+});
+	
 var EpisodeForm = React.createClass({
     getInitialState: function() {
         return {title: '', season: '', episode: ''};
@@ -75,4 +127,5 @@ var EpisodeForm = React.createClass({
     }
 });
 
-render(<Episode/>, document.getElementById('episode-form'));
+render(<EpisodeList/>, document.getElementById('episode-list'));
+render(<EpisodeForm/>, document.getElementById('episode-form'));

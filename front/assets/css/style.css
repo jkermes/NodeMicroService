@@ -1,0 +1,29 @@
+table, td, th {
+	border: 1px solid #ddd;
+	text-align: center;
+}
+
+table {
+	border-collapse: collapse; 
+	width: 59%; 
+}
+
+th, td {
+	padding: 15px;
+}
+
+form {
+	float:right;
+	width:35%;
+}
+
+@media screen and (max-width: 860px) 
+{
+	table {
+		width: 100%;
+	}
+	form { 
+		width: 100%; 
+		margin-bottom: 50px;
+	}
+}
