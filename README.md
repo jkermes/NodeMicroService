@@ -1,5 +1,15 @@
 # NodeMicroService
 
+### Npm install :
+	
+-Into back directory :
+
+	npm install
+	
+- Into front directory :
+- 
+	npm install
+
 ### To launch the server :
 
 	node --use-strict back/server/index.js
