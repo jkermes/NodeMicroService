@@ -18,35 +18,51 @@ var EpisodeList = React.createClass({
         return {episodes: ''};
     },
 	loadAllEpisodes: function() {
-		fetch(serverUrl, {
-			method: 'get'
-		}).then(function(response) {
-			return response.json();
-		}).then(function(data) {
-			this.setState({episodes: data});
-		}).catch(function(error) {
-			console.log('error :' + error);
-		});
+        var data;
+        var req = new XMLHttpRequest();
+        req.open('GET', 'http://localhost:9312/', true);
+        req.overrideMimeType('application/json');
+        req.onreadystatechange = function (aEvt) {
+            if (req.readyState == 4) {
+                if (req.status == 200) {
+                    data = req.responseText;
+                    console.log(data);
+                }
+                else {
+                     console.log('Erreur pendant le chargement de la page.\n');
+                }
+            }
+        };
+        console.log(data);
+        req.send(null);
+
+        this.setState({episodes: data});
+        
 	},
-	render: function(){
-		return (
-			
-			<tr>
-				<td>Title</td>
-				<td>Saison</td>
-				<td>Episode</td>
-			</tr>
-			
-		);
-	},
-	componentWillMount: function() {
+	   render: function() {
+        return (<table>
+                    <thead>
+                        <tr>
+                            <td>Id</td>
+                            <td>Serie</td>
+                            <td>Season</td>
+                            <td>Episode</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                    </tbody>
+                </table>
+        );
+    },
+	componentDidMount: function() {
 		this.loadAllEpisodes();
 		console.log(this.state.episodes);
 	}
 });
 
 var EpisodeListItem = React.createClass({
-	render: function(){
+	render: function() {
 		return (
 			<tr>
 				<td></td>
@@ -111,4 +127,5 @@ var EpisodeForm = React.createClass({
     }
 });
 
-render(<Episode/>, document.getElementById('episode-form'));
+render(<EpisodeList/>, document.getElementById('episode-list'));
+render(<EpisodeForm/>, document.getElementById('episode-form'));
