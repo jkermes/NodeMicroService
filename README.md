@@ -9,6 +9,10 @@
 - Into front directory :
 
 	npm install
+	
+- Into back/test directory :
+
+	npm install
 
 ### To launch the server :
 
