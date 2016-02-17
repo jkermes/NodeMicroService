@@ -2,7 +2,7 @@
 
 ### Npm install :
 	
--Into back directory :
+- Into back directory :
 
 	npm install
 	
