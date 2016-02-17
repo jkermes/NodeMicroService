@@ -50,7 +50,13 @@ var EpisodeList = React.createClass({
                         </tr>
                     </thead>
                     <tbody>
-                    
+                    //</EpisodeListItem>
+						<tr>
+							<td>1</td>
+							<td>Game of thrones</td>
+							<td>3</td>
+							<td>2</td>
+						</tr>
                     </tbody>
                 </table>
         );
